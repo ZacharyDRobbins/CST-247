@@ -1,12 +1,184 @@
-﻿
+
 @{
     ViewBag.Title = "Home";
 }
+<style>
+    * {
+        box-sizing: border-box;
+    }
 
-<h2>Home</h2>
+    body {
+        background-color: #f1f1f1;
+    }
+
+    #regForm {
+        background-color: #ffffff;
+        margin: 100px auto;
+        font-family: Raleway;
+        padding: 40px;
+        width: 70%;
+        min-width: 300px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    input {
+        padding: 10px;
+        width: 100%;
+        font-size: 17px;
+        font-family: Raleway;
+        border: 1px solid #aaaaaa;
+    }
+
+        /* Mark input boxes that gets an error on validation: */
+        input.invalid {
+            background-color: #ffdddd;
+        }
+
+    /* Hide all steps by default: */
+    .tab {
+        display: none;
+    }
+/*
+    button {
+        background-color: #4CAF50;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 17px;
+        font-family: Raleway;
+        cursor: pointer;
+    }
+*/
+        button:hover {
+            opacity: 0.8;
+        }
+
+    #prevBtn {
+        background-color: #bbbbbb;
+    }
+
+    /* Make circles that indicate the steps of the form: */
+    .step {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbbbbb;
+        border: none;
+        border-radius: 50%;
+        display: inline-block;
+        opacity: 0.5;
+    }
+
+        .step.active {
+            opacity: 1;
+        }
+
+        /* Mark the steps that are finished and valid: */
+        .step.finish {
+            background-color: #4CAF50;
+        }
+
+    .attbutton {
+        background-color: grey;
+        color: white;
+    }
+
+</style>
 
 <body>
     <h5>This is the Home!</h5>
     <br>
     <h3>Happy times, friend.</h3>
+
+    <h1>Action List:</h1>
+    <button class="attbutton" type="button" id="nextBtn" onclick="nextPrev(0)">Attack a Random Thing!</button>
+    <button class="attbutton" type="button" id="next2Btn" onclick="nextPrev(1)">Shop!</button>
+    <button class="attbutton" type="button" id="next3Btn" onclick="nextPrev(2)">Pray?!</button>
+
+    <form id="regForm" action="">
+        <!-- One "tab" for each step in the form: -->
+        <div class="tab">  <!-- Tab 0 - Attack -->
+            <h1>Atttack a Random Enemy: </h1> 
+            <div align="center">
+                <button class="attbutton" type="button" id="attackBtn" onclick="nextPrev(3)">Attack!</button>
+                <button class="attbutton" type="button" id="defendBtn" onclick="nextPrev(4)">Defend</button>
+                <button class="attbutton" type="button" id="runBtn" onclick="nextPrev(5)">Give Up . . .</button>
+            </div>
+        </div>
+
+        <div class="tab"> <!-- Tab 1 - Shop -->
+            <div>
+                <h4>Shop:</h4>
+                <h3><button class="attbutton" type="button" id="shopBtn" onclick="nextPrev(6)">Buy</button></h3>
+                <h3><button class="attbutton">Sell</button></h3>
+            </div>
+        </div>
+
+        <div class="tab"> <!-- Tab 2 - Pray -->
+            <div>
+                <h4>You pray to your puny god . . . Nothing happens . . .</h4>
+            </div>
+        </div>
+
+        <div class="tab">
+            <!-- Tab 3 - Attack -->
+            <div>
+                <h4>You attack the enemy!</h4>
+            </div>
+        </div>
+
+        <div class="tab">
+            <!-- Tab 4 - Defend -->
+            <div>
+                <h4>You choose to defend against the enemy's attack!:</h4>
+            </div>
+        </div>
+
+        <div class="tab">
+            <!-- Tab 5 - Give Up -->
+            <div>
+                <h4>Curl up in a ball and die; might as well get this over with . . .</h4>
+            </div>
+        </div>
+
+        <div class="tab">
+            <!-- Tab 6 - Buy -->
+            <div>
+                <h4>Here are some goods you can buy:</h4>
+                <h3><br />  Wooden Sword    -   20 Gold -   5 Attack </h3>
+                <h3>        Leather Armor   -   50 Gold -   10 Defense </h3>
+                <h3>  Rubber Ducky    -   1 Gold  -   500 Health </h3>
+            </div>
+        </div>
+    </form>
+
+    <script>
+
+        var currentTab = 0; // Current tab is set to be the first tab (0)
+        showTab(currentTab); // Display the current tab
+
+        function showTab(n) {
+            // This function will display the specified tab of the form...
+            var x = document.getElementsByClassName("tab");
+            x[n].style.display = "block";
+
+        }
+
+        function nextPrev(n) {
+            // This function will figure out which tab to display
+            var x = document.getElementsByClassName("tab");
+            // Hide the current tab:
+            x[currentTab].style.display = "none";
+            // Increase or decrease the current tab by 1:
+            currentTab = n;
+
+            showTab(currentTab);
+        }
+        
+    </script>
+
 </body>
+
