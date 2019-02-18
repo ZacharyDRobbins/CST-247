@@ -1,4 +1,4 @@
-﻿using Milestone.Models;
+using Milestone.Models;
 using Milestone.Services.Business;
 using System;
 using System.Collections.Generic;
@@ -42,7 +42,7 @@ namespace Milestone.Controllers
             if (result == true)
             {
                 ViewData["user"] = model;
-                return View("Home");
+                return View("Login");
             }
             else
                 return View("LoginFailed");
